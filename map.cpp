@@ -90,16 +90,16 @@ void Map::handlePlayer(Player &p)
         int randomHealth = rand() % 5;
         if(randomHealth == 0)
         {
-            p.setHealth(-1);
+            p.setHealth(p.getHealth() -1);
         }
     }
     else if(gridArray[x][y] == 'F')
     {
-        p.setHealth(+1);
+        p.setHealth(p.getHealth() -1);
     }
     else if(gridArray[x][y] == 'R')
     {
-        p.setRelictCount(+1);
+        p.setRelictCount(1);
     }
     gridArray[x][y] = 'X';
 }
@@ -107,4 +107,13 @@ void Map::handlePlayer(Player &p)
 int Map::getRelictCount() const
 {
     return relictCount;
+}
+
+char Map::getInfo(int x, int y) const{
+    return gridArray[x][y]; 
+}
+
+void Map::setInfo(int x, int y, char c)
+{
+    gridArray[x][y] = c;    
 }

@@ -53,13 +53,13 @@ void Player::playerMove(char c, Map &m)
 //stats
 void Player::playerStats(Map &m)
 {
-    std::cout << "Health: " << health << "  " << "Position: "<< startX << "/" << startY << "Relcis: " << relictPlayerCount << std::endl;
+    std::cout << "Health: " << health << "  " << "Position: "<< startX << "/" << startY << " Relcis: " << relictPlayerCount << "/"<< m.getRelictCount()<<std::endl;
     
 }
 
 void Player::setHealth(int h)
 {
-    health += h;
+    health = h;
 }
 
 int Player::getX() const

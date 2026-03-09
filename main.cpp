@@ -12,14 +12,11 @@ int main(){
 
     Map world;
     Player player;
-    Enemy enemy;
+    Enemy enemy(world);
 
     world.gridPrint();
     player.playerStats(world);
-    //enemy.findPlace(world);
-    //debug
-    std::cout << enemy.startX << "/" << enemy.startY << std::endl;
-    //debug
+
     std::cout << std::endl;
 
     while(endGame == 1)
@@ -30,6 +27,7 @@ int main(){
             std::cin >> c;
         }
         player.playerMove(c, world);
+        enemy.enemyMove(player, world);
         world.gridPrint();
         player.playerStats(world);
         if(player.getRelictCount() == world.getRelictCount())
