@@ -32,11 +32,11 @@ int main(){
         player.playerMove(c, world);
         
         
-        enemy.enemyMove(player, world);
+        //enemy.enemyMove(player, world);
         world.gridPrint();
         player.playerStats(world);
         //debug
-        std::cout << enemy.startX << "/" << enemy.startY << std::endl;
+        //std::cout << enemy.startX << "/" << enemy.startY << std::endl;
         //debug
         
         if(player.relictPlayerCount == world.relictCount)
