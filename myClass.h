@@ -5,23 +5,47 @@ class Player;
 class Enemy; //forward declaration
 
 class Map{
-    public:
+    private:
         char gridArray [5][5];
-        int relictCount;
-        Map();  
-        void gridPrint();
+        int relictCount;         
+    
+    public:
+        Map();  //muss nicht ver#ndert werden ist basicly einfach nur da um die welt zu genereiren!
+        void gridPrint() const; //weil es die map nicht verändern soll
+        int getRelictCount() const;
         void handlePlayer(Player &p);
         void handleMap(Player &p);
-        void handleEnemy(Enemy &e);
-        int endGame = 0;
+        
+        ///IRGENWELCHE FUNKTIONEN;
+        //char getInfo(int x, int y) const; //girArray ist privat deswegen muss gefragt werden was hier drauf ist 
+        //void setInfo(int x, int y, char c); // zum überarbeiten vom Feldern;
+
+        //void handleMap(Player &p);
+        //void handleEnemy(Enemy &e);
+        //int endGame = 0;
 };
 
 class Player{
-    public:
+    private:
         int health = 5;
         int startX = 0;
         int startY = 0;
         int relictPlayerCount = 0;
+
+    public:
+        //getter
+        int getX() const;
+        int getY() const;
+        int getRelictCount();
+        int getHealth();
+
+        //setter
+        void setHealth(int h);
+        void setRelictCount(int r);
+
+
+
+        //void takeDamage(int d);
         void playerMove(char c, Map &m);
         void playerStats(Map &m);
 };

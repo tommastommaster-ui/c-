@@ -6,7 +6,6 @@ Map::Map()
 {
     Map::relictCount = 0;
     //nested for loop
-
     do{
         for(int i = 0; i<5; i++)
         {
@@ -42,8 +41,11 @@ Map::Map()
     gridArray[0][0] = 'X';
 
 }
+//das ist richtig und es generiert die map;
 
-void Map::gridPrint()
+
+
+void Map::gridPrint() const
 {
     for(int b = 0; b<5; b++)
     {
@@ -58,33 +60,51 @@ void Map::gridPrint()
 }
 //bis hier ist es okay
 
+//returniert die relicts
+
+
+
+
+
 void Map::handleMap(Player &p)
 {
-    if(gridArray[p.startX][p.startY] == 'X')
+    int x = p.getX();
+    int y = p.getY();
+
+    
+    if(gridArray[x][y] == 'X')
     {
-        gridArray[p.startX][p.startY] = '.';
+        gridArray[x][y] = '.';
     }
     
 }
 
 void Map::handlePlayer(Player &p)
 {
-    if(gridArray[p.startX][p.startY] == 'D')
+    int x = p.getX();
+    int y = p.getY();
+
+
+    if(gridArray[x][y] == 'D')
     {
         int randomHealth = rand() % 5;
         if(randomHealth == 0)
         {
-            p.health-=1;
+            p.setHealth(-1);
         }
     }
-    else if(gridArray[p.startX][p.startY] == 'F')
+    else if(gridArray[x][y] == 'F')
     {
-        p.health +=1;
+        p.setHealth(+1);
     }
-    else if(gridArray[p.startX][p.startY] == 'R')
+    else if(gridArray[x][y] == 'R')
     {
-        p.relictPlayerCount +=1;
+        p.setRelictCount(+1);
     }
-    gridArray[p.startX][p.startY] = 'X';
+    gridArray[x][y] = 'X';
 }
 
+int Map::getRelictCount() const
+{
+    return relictCount;
+}
