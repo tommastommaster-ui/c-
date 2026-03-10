@@ -12,8 +12,9 @@ int main(){
 
     Map world;
     Player player;
-    Enemy enemy(world);
-
+    Enemy enemy;
+    
+    enemy.findPathEnemy(world);
     world.gridPrint();
     player.playerStats(world);
 
@@ -32,8 +33,13 @@ int main(){
         player.playerStats(world);
         if(player.getRelictCount() == world.getRelictCount())
         {
-            std::cout << "YOU HAVE WON THE GAME !!!"<< std::endl;
-            endGame = 0;
+            //std::cout << "YOU HAVE WON THE GAME !!!"<< std::endl;
+            //endGame = 0;
+            player.setRelictCount(-(player.getRelictCount()));
+            world.newMap(player);
+            enemy.findPathEnemy(world);
+            world.gridPrint();
+            enemy.enemyMove(player, world);
         }
         else if(player.getHealth() == 0)
         {

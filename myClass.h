@@ -24,6 +24,7 @@ class Map{
         void gridPrint() const; //weil es die map nicht verändern soll
         void handlePlayer(Player &p);
         void handleMap(Player &p);
+        void newMap(Player &p);
         
         ///IRGENWELCHE FUNKTIONEN;
         //char getInfo(int x, int y) const; //girArray ist privat deswegen muss gefragt werden was hier drauf ist 
@@ -66,7 +67,7 @@ class Enemy{
         //int spawnX;
         //int spawnY;
     public:
-        Enemy(Map &m);
+        void findPathEnemy(Map &m);
         void enemyMove(Player &p, Map &m);
         //char getUnderEnemy();
 };

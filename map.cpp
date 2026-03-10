@@ -117,3 +117,41 @@ void Map::setInfo(int x, int y, char c)
 {
     gridArray[x][y] = c;    
 }
+
+void Map::newMap(Player &p)
+{
+    Map::relictCount = 0;
+    //nested for loop
+    do{
+        for(int i = 0; i<5; i++)
+        {
+            for(int j = 0; j < 5; j++)
+            {
+                if(i ==p.getX() && j==p.getY())
+                {
+                    continue;
+                }
+                int randomNum = rand() % 10; //0-9
+                if(randomNum >= 0 && randomNum <= 3)
+                {
+                    //leere Felder
+                    gridArray[i][j] = '_';
+                }
+                else if(randomNum > 3 && randomNum <=7)
+                {
+                    gridArray[i][j] = 'D';
+                }
+                else if(randomNum > 7 && randomNum <= 8)
+                {
+                    gridArray[i][j] = 'F';
+                }
+                else if(randomNum == 9)
+                {
+                    gridArray[i][j] = 'R';
+                    ++Map::relictCount;
+                }
+            }
+        }
+    } while(Map::relictCount == 0);
+
+}

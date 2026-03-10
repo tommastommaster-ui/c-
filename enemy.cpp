@@ -1,7 +1,7 @@
 #include <iostream>
 #include "myClass.h"
 
-Enemy::Enemy(Map &m)
+void Enemy::findPathEnemy(Map &m)
 {
     for(int i = 0; i < 5; ++i)
     {
