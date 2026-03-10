@@ -20,7 +20,7 @@ void Enemy::findPathEnemy(Map &m)
     m.setInfo(startX, startY, 'E'); 
 };
 
-void Enemy::enemyMove(Player &p, Map &m)
+void Enemy::enemyMove(Player &p, Map &m, int difficulty)
 {   
     //underEnemy = m.gridArray[startX][startY];
     //m.gridArray[startX][startY] = 'E';
@@ -34,7 +34,7 @@ void Enemy::enemyMove(Player &p, Map &m)
     if(startX != p.getX())
     {
         
-        if(startX < p.getX()&& rand()%2==0)
+        if(startX < p.getX()&& rand()%difficulty==0)
         {
             ++startX;
         }
@@ -45,7 +45,7 @@ void Enemy::enemyMove(Player &p, Map &m)
     }
     else 
     {
-        if(startY < p.getY()&& rand()%2==0)
+        if(startY < p.getY()&& rand()%difficulty==0)
         {
             ++startY;
         }

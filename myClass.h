@@ -64,28 +64,14 @@ class Enemy{
         int startY;
         char underEnemy;
         char tmp;
+        int difficulty=3;
         //int spawnX;
         //int spawnY;
     public:
         void findPathEnemy(Map &m);
-        void enemyMove(Player &p, Map &m);
+        void enemyMove(Player &p, Map &m, int difficulty);
         //char getUnderEnemy();
 };
-
-
-
-
-class EnemyOld{
-    
-    public:
-    int startX = 5;
-    int startY = 5;
-    bool despawn = false;
-    char underEnemy;
-    void findPlace(Map &m);
-    void enemyMove(Player &p, Map &m);
-};
-
 
 
 #endif

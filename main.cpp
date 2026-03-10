@@ -8,6 +8,7 @@ int main(){
     srand(time(0));
     char c; 
     int endGame = 1;
+    int difficulty = 3;
     
 
     Map world;
@@ -28,18 +29,22 @@ int main(){
             std::cin >> c;
         }
         player.playerMove(c, world);
-        enemy.enemyMove(player, world);
+        enemy.enemyMove(player, world, difficulty);
         world.gridPrint();
         player.playerStats(world);
         if(player.getRelictCount() == world.getRelictCount())
         {
             //std::cout << "YOU HAVE WON THE GAME !!!"<< std::endl;
             //endGame = 0;
+            if(difficulty != 2)
+            {
+                difficulty = 2;
+            }
             player.setRelictCount(-(player.getRelictCount()));
             world.newMap(player);
             enemy.findPathEnemy(world);
             world.gridPrint();
-            enemy.enemyMove(player, world);
+            enemy.enemyMove(player, world, difficulty);
         }
         else if(player.getHealth() == 0)
         {
