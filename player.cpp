@@ -10,14 +10,9 @@ void Player::playerMove(char c, Map &m)
     case 'w':
         if(startX > 0)
         {
-            //Map::gridArray[startX][startY] = '.'
-            //hier muss ich x und y weitergeben das sie zu . wurden nachdem
-            //der spieler drauf war
-            //function:map_überarbeiten
             m.handleMap(*this);
             startX -= 1;
             m.handlePlayer(*this);
-            //check einbauen was auf der fp ist.
         }
         break;
     case 's':
@@ -47,7 +42,6 @@ void Player::playerMove(char c, Map &m)
     default:
         break;
     }
-    //std::cout<<"Position: " << startX << "/" << startY;
 }
 
 //stats

@@ -14,18 +14,13 @@ void Enemy::findPathEnemy(Map &m)
             }
         }
     }
-    //spawnX = startX;
-    //spawnY = startY;
+
     underEnemy = m.getInfo(startX, startY);
     m.setInfo(startX, startY, 'E'); 
 };
 
 void Enemy::enemyMove(Player &p, Map &m, int difficulty)
 {   
-    //underEnemy = m.gridArray[startX][startY];
-    //m.gridArray[startX][startY] = 'E';
-
-
 
     int oldX = startX;
     int oldY = startY;
@@ -34,39 +29,41 @@ void Enemy::enemyMove(Player &p, Map &m, int difficulty)
     if(startX != p.getX())
     {
         
-        if(startX < p.getX()&& rand()%difficulty==0)
+        if(rand()%difficulty==0)
         {
-            ++startX;
+            if(startX < p.getX())
+            {
+                ++startX;
+            }
+            else if(startX > p.getX())
+            {
+                --startX;
+            }
         }
-        else if(startX > p.getX())
-        {
-            --startX;
-        }
+
     }
     else 
     {
-        if(startY < p.getY()&& rand()%difficulty==0)
+        if(rand()%difficulty==0)
         {
-            ++startY;
+            if(startY < p.getY())
+            {
+                ++startY;
+            }
+            else if(startY > p.getY())
+            {
+                --startY;
+            }
         }
-        else if(startY > p.getY())
-        {
-            --startY;
-        }
+
     }
-
-
-
 
     if(m.getInfo(startX, startY) == 'X')
     {
-        //int h = p.getHealth();
+
         p.setHealth(0);
         m.setInfo(oldX, oldY, underEnemy);
         m.setInfo(startX, startY, 'E');
-        //underEnemy = m.getInfo(spawnX, spawnY);
-        //startX = spawnX;
-        //startY = spawnY;
         return;
     }
 
@@ -75,6 +72,5 @@ void Enemy::enemyMove(Player &p, Map &m, int difficulty)
     underEnemy = m.getInfo(startX, startY);
     m.setInfo(startX, startY, 'E');
     
-    //char tmp = m.getInfo(startX, startY);  
     
 };

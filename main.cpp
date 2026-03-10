@@ -34,30 +34,20 @@ int main(){
         player.playerStats(world);
         if(player.getRelictCount() == world.getRelictCount())
         {
-            //std::cout << "YOU HAVE WON THE GAME !!!"<< std::endl;
-            //endGame = 0;
-            if(difficulty != 2)
+            if(difficulty > 1)
             {
-                difficulty = 2;
+                difficulty -=1;
             }
             player.setRelictCount(-(player.getRelictCount()));
             world.newMap(player);
             enemy.findPathEnemy(world);
             world.gridPrint();
-            enemy.enemyMove(player, world, difficulty);
         }
         else if(player.getHealth() == 0)
         {
             std::cout << "GAME OVER GAME OVER!!!" << std::endl;
             endGame = 0;
         }
-        
-        
-        //enemy.enemyMove(player, world);
-
-        //debug
-        //std::cout << enemy.startX << "/" << enemy.startY << std::endl;
-        //debug
         
 
         std::cout << std::endl;

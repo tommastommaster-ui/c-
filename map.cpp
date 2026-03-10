@@ -58,12 +58,6 @@ void Map::gridPrint() const
     }
     std::cout << std::endl;
 }
-//bis hier ist es okay
-
-//returniert die relicts
-
-
-
 
 
 void Map::handleMap(Player &p)

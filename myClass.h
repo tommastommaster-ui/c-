@@ -26,13 +26,7 @@ class Map{
         void handleMap(Player &p);
         void newMap(Player &p);
         
-        ///IRGENWELCHE FUNKTIONEN;
-        //char getInfo(int x, int y) const; //girArray ist privat deswegen muss gefragt werden was hier drauf ist 
-        //void setInfo(int x, int y, char c); // zum überarbeiten vom Feldern;
 
-        //void handleMap(Player &p);
-        //void handleEnemy(Enemy &e);
-        //int endGame = 0;
 };
 
 class Player{
@@ -65,13 +59,10 @@ class Enemy{
         char underEnemy;
         char tmp;
         int difficulty=3;
-        //int spawnX;
-        //int spawnY;
+
     public:
         void findPathEnemy(Map &m);
         void enemyMove(Player &p, Map &m, int difficulty);
-        //char getUnderEnemy();
+
 };
-
-
 #endif
