@@ -12,8 +12,7 @@ private:
 
 public:
   // constructor
-  Map(const Player &p); // muss nicht ver#ndert werden ist basicly einfach nur
-                        // da um die welt zu genereiren!
+  Map(const Player &p); 
 
   // getter
   int getRelictCount() const;

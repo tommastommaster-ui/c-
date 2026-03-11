@@ -5,7 +5,7 @@
 int main() {
   // std::cout << rand()<< std::endl;
   srand(time(0));
-  char c;
+  char userInput;
   int endGame = 1;
   int difficulty = 3;
 
@@ -20,11 +20,11 @@ int main() {
   std::cout << std::endl;
 
   while (endGame == 1) {
-    std::cin >> c;
-    while (c != 'w' && c != 'a' && c != 's' && c != 'd') {
-      std::cin >> c;
+    std::cin >> userInput;
+    while (userInput != 'w' && userInput != 'a' && userInput != 's' && userInput != 'd') {
+      std::cin >> userInput;
     }
-    player.playerMove(c, world);
+    player.playerMove(userInput, world);
     enemy.enemyMove(player, world, difficulty);
     world.gridPrint();
     player.playerStats(world);
