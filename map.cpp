@@ -45,7 +45,7 @@ Map::Map(const Player &p)
     // Map::generateMap(csonst Player &p);
 
     generateMap(p);
-    gridArray[0][0] = 'X';
+    gridArray[p.getX()][p.getY()] = 'X';
 }
 // das ist richtig und es generiert die map;
 

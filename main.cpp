@@ -10,7 +10,8 @@ int main()
   bool endGame = true;
   int difficulty = 3;
 
-  Player player;
+  //erstellung der objekte
+  Player player; 
   Map world(player);
   Enemy enemy;
 
@@ -37,7 +38,7 @@ int main()
       {
         difficulty -= 1;
       }
-      
+
       player.setRelictCount(-(player.getRelictCount()));
       world.newMap(player);
       enemy.findSpawn(world);

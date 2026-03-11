@@ -41,7 +41,8 @@ void Player::playerMove(char c, Map &m)
 
     if(newY >= 0 && newY < 5 || newX >= 0 && newX < 5)
     {
-        m.handleRoute(*this);
+        m.handleRoute(*this); //this ist ein pointer auf das aktuelle objekt 
+        //*this ist ein referenz auf das objekt
         startX = newX;
         startY = newY;
         m.handlePlayer(*this);
