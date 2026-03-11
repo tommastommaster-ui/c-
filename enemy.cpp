@@ -67,4 +67,5 @@ void Enemy::enemyMove(Player &p, Map &m, int difficulty)
     m.setInfo(oldX, oldY, underEnemy);
     underEnemy = m.getInfo(startX, startY);
     m.setInfo(startX, startY, 'E');
+
 };
