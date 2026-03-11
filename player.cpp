@@ -10,7 +10,7 @@ void Player::playerMove(char c, Map &m)
     case 'w':
         if (startX > 0)
         {
-            m.handleMap(*this);
+            m.handleRoute(*this);
             startX -= 1;
             m.handlePlayer(*this);
         }
@@ -18,7 +18,7 @@ void Player::playerMove(char c, Map &m)
     case 's':
         if (startX < 4)
         {
-            m.handleMap(*this);
+            m.handleRoute(*this);
             startX += 1;
             m.handlePlayer(*this);
         }
@@ -26,7 +26,7 @@ void Player::playerMove(char c, Map &m)
     case 'd':
         if (startY < 4)
         {
-            m.handleMap(*this);
+            m.handleRoute(*this);
             startY += 1;
             m.handlePlayer(*this);
         }
@@ -34,7 +34,7 @@ void Player::playerMove(char c, Map &m)
     case 'a':
         if (startY > 0)
         {
-            m.handleMap(*this);
+            m.handleRoute(*this);
             startY -= 1;
             m.handlePlayer(*this);
         }
@@ -74,7 +74,7 @@ int Player::getRelictCount()
     return relictPlayerCount;
 }
 
-int Player::getHealth()
+int Player::getHealth() const
 {
     return health;
 }
