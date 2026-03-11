@@ -2,29 +2,28 @@
 #include "myClass.h"
 #include <ctime>
 
-
-int main(){
-    //std::cout << rand()<< std::endl;
+int main()
+{
+    // std::cout << rand()<< std::endl;
     srand(time(0));
-    char c; 
+    char c;
     int endGame = 1;
     int difficulty = 3;
-    
 
     Map world;
     Player player;
     Enemy enemy;
-    
+
     enemy.findPathEnemy(world);
     world.gridPrint();
     player.playerStats(world);
 
     std::cout << std::endl;
 
-    while(endGame == 1)
+    while (endGame == 1)
     {
         std::cin >> c;
-        while(c != 'w'&& c != 'a'&& c != 's'&& c != 'd')
+        while (c != 'w' && c != 'a' && c != 's' && c != 'd')
         {
             std::cin >> c;
         }
@@ -32,26 +31,25 @@ int main(){
         enemy.enemyMove(player, world, difficulty);
         world.gridPrint();
         player.playerStats(world);
-        if(player.getRelictCount() == world.getRelictCount())
+        if (player.getRelictCount() == world.getRelictCount())
         {
-            if(difficulty > 1)
+            if (difficulty > 1)
             {
-                difficulty -=1;
+                difficulty -= 1;
             }
             player.setRelictCount(-(player.getRelictCount()));
             world.newMap(player);
             enemy.findPathEnemy(world);
             world.gridPrint();
         }
-        else if(player.getHealth() == 0)
+        else if (player.getHealth() == 0)
         {
             std::cout << "GAME OVER GAME OVER!!!" << std::endl;
             endGame = 0;
         }
-        
 
         std::cout << std::endl;
     }
-    
+
     return 0;
 }

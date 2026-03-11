@@ -8,7 +8,7 @@ void Player::playerMove(char c, Map &m)
     switch (c)
     {
     case 'w':
-        if(startX > 0)
+        if (startX > 0)
         {
             m.handleMap(*this);
             startX -= 1;
@@ -16,7 +16,7 @@ void Player::playerMove(char c, Map &m)
         }
         break;
     case 's':
-        if(startX < 4)
+        if (startX < 4)
         {
             m.handleMap(*this);
             startX += 1;
@@ -24,7 +24,7 @@ void Player::playerMove(char c, Map &m)
         }
         break;
     case 'd':
-        if(startY < 4)
+        if (startY < 4)
         {
             m.handleMap(*this);
             startY += 1;
@@ -32,7 +32,7 @@ void Player::playerMove(char c, Map &m)
         }
         break;
     case 'a':
-        if(startY > 0)
+        if (startY > 0)
         {
             m.handleMap(*this);
             startY -= 1;
@@ -44,11 +44,10 @@ void Player::playerMove(char c, Map &m)
     }
 }
 
-//stats
-void Player::playerStats(Map &m)
+// stats
+void Player::playerStats(const Map &m)
 {
-    std::cout << "Health: " << health << "  " << "Position: "<< startX << "/" << startY << " Relcis: " << relictPlayerCount << "/"<< m.getRelictCount()<<std::endl;
-    
+    std::cout << "Health: " << health << "  " << "Position: " << startX << "/" << startY << " Relcis: " << relictPlayerCount << "/" << m.getRelictCount() << std::endl;
 }
 
 void Player::setHealth(int h)
