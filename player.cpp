@@ -2,46 +2,52 @@
 #include <iostream>
 #include <ctime>
 
+
+
 void Player::playerMove(char c, Map &m)
 {
+    int newX = startX;
+    int newY = startY;
 
     switch (c)
     {
     case 'w':
-        if (startX > 0)
+        if (newX > 0)
         {
-            m.handleRoute(*this);
-            startX -= 1;
-            m.handlePlayer(*this);
+            newX -= 1;
         }
         break;
     case 's':
-        if (startX < 4)
+        if (newX < 4)
         {
-            m.handleRoute(*this);
-            startX += 1;
-            m.handlePlayer(*this);
+            newX += 1;
         }
         break;
     case 'd':
-        if (startY < 4)
+        if (newY < 4)
         {
-            m.handleRoute(*this);
-            startY += 1;
-            m.handlePlayer(*this);
+            newY += 1;
         }
         break;
     case 'a':
-        if (startY > 0)
+        if (newY > 0)
         {
-            m.handleRoute(*this);
-            startY -= 1;
-            m.handlePlayer(*this);
+            newY -= 1;
         }
         break;
     default:
         break;
     }
+
+    if(newY >= 0 && newY < 5 || newX >= 0 && newX < 5)
+    {
+        m.handleRoute(*this);
+        startX = newX;
+        startY = newY;
+        m.handlePlayer(*this);
+    }
+
+
 }
 
 // stats

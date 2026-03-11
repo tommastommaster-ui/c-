@@ -44,7 +44,7 @@ Map::Map(const Player &p)
 {
     // Map::generateMap(csonst Player &p);
 
-    this->generateMap(p);
+    generateMap(p);
     gridArray[0][0] = 'X';
 }
 // das ist richtig und es generiert die map;
@@ -67,10 +67,7 @@ void Map::handleRoute(const Player &p)
     int x = p.getX();
     int y = p.getY();
 
-    if (gridArray[x][y] == 'X')
-    {
-        gridArray[x][y] = '.';
-    }
+    gridArray[x][y] = '.';
 }
 
 void Map::handlePlayer(Player &p)
@@ -114,6 +111,5 @@ void Map::setInfo(int x, int y, char c)
 
 void Map::newMap(const Player &p)
 {
-    //Map::generateMap();
-    this->generateMap(p);
+    generateMap(p);
 }

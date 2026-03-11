@@ -53,13 +53,13 @@ public:
 
 class Enemy {
 private:
-  int startX;
-  int startY;
+  int posX;
+  int posY;
   char underEnemy;
-  int difficulty = 3;
+  int difficulty = 4;
 
 public:
-  void findPathEnemy(Map &m);
-  void enemyMove(Player &p, Map &m, int difficulty);
+  void findSpawn(Map &m);
+  void movePathEnemy(Player &p, Map &m, int difficulty);
 };
 #endif

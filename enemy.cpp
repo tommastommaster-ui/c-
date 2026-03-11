@@ -1,7 +1,7 @@
 #include <iostream>
 #include "myClass.h"
 
-void Enemy::findPathEnemy(Map &m)
+void Enemy::findSpawn(Map &m)
 {
     for (int i = 0; i < 5; ++i)
     {
@@ -9,34 +9,36 @@ void Enemy::findPathEnemy(Map &m)
         {
             if (m.getInfo(i, j) == '_')
             {
-                startX = i;
-                startY = j;
+                posX = i;
+                posY = j;
             }
+
         }
     }
 
-    underEnemy = m.getInfo(startX, startY);
-    m.setInfo(startX, startY, 'E');
+    underEnemy = m.getInfo(posX, posY);
+    m.setInfo(posX, posY, 'E');
 };
 
-void Enemy::enemyMove(Player &p, Map &m, int difficulty)
+
+void Enemy::movePathEnemy(Player &p, Map &m, int difficulty)
 {
 
-    int oldX = startX;
-    int oldY = startY;
+    int oldX = posX;
+    int oldY = posY;
 
-    if (startX != p.getX())
+    if (posX != p.getX())
     {
 
         if (rand() % difficulty == 0)
         {
-            if (startX < p.getX())
+            if (posX < p.getX())
             {
-                ++startX;
+                ++posX;
             }
-            else if (startX > p.getX())
+            else if (posX > p.getX())
             {
-                --startX;
+                --posX;
             }
         }
     }
@@ -44,28 +46,29 @@ void Enemy::enemyMove(Player &p, Map &m, int difficulty)
     {
         if (rand() % difficulty == 0)
         {
-            if (startY < p.getY())
+            if (posY < p.getY())
             {
-                ++startY;
+                ++posY;
             }
-            else if (startY > p.getY())
+            else if (posY > p.getY())
             {
-                --startY;
+                --posY;
             }
         }
     }
 
-    if (m.getInfo(startX, startY) == 'X')
+    if (m.getInfo(posX, posY) == 'X')
     {
         p.setHealth(0);
         m.setInfo(oldX, oldY, underEnemy);
-        m.setInfo(startX, startY, 'E');
+        m.setInfo(posX, posY, 'E');
         return;
     }
 
     // move Enemy
     m.setInfo(oldX, oldY, underEnemy);
-    underEnemy = m.getInfo(startX, startY);
-    m.setInfo(startX, startY, 'E');
+    underEnemy = m.getInfo(posX, posY);
+    m.setInfo(posX, posY, 'E');
+
 
 };
